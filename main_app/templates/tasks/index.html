@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/tasks/task-index.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="mb-4">
+  <h1 class="text-center">Task List</h1>
+</section>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  {% for task in tasks %}
+  <div class="col">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">{{ task.name }}</h5>
+        <ul class="list-group list-group-flush mb-3">
+          {% for item in task.description %}
+          <li class="list-group-item">{{ item }}</li>
+          {% endfor %}
+        </ul>
+        <p class="card-text">
+          Status:
+          {% if task.is_complete %}
+            <span class="text-success fw-bold">Complete ✅</span>
+          {% else %}
+            <span class="text-danger fw-bold">Incomplete ❌</span>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
