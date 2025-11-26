@@ -1,24 +1,56 @@
 <!-- main_app/templates/about.html -->
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo App</title>
-  </head>
-  <body>
-    <h1>About the Todo App</h1>
-    <h2>Creator: Zebastian Rodriguez</h2>
-    <p>This project is my first full-stack build since graduating from the General Assembly Software Engineering Bootcamp. I chose a TODO List application to reinforce the Python skills I’ve continued practicing and to rebuild a Django project from the ground up. I also used it as an opportunity to challenge myself with Bootstrap and improve my front-end styling. Overall, this project highlights my commitment to strengthening my foundation and growing as a full-stack developer.</p>
+{% extends "base.html" %}
 
-    <h3>Explore More of My Work</h3>
-    <p>To see more of my projects and connect with me, feel free to visit the links below:</p>
+{% block content %}
 
-    <ul>
-        <li><a href="https://www.linkedin.com/in/zebastian-rodriguez-480191309/" target="_blank">LinkedIn</a></li>
-        <li><a href="https://github.com/Zebyrod" target="_blank">GitHub</a></li>
-    </ul>
-  </body>
-</html>
+<div class="container py-4">
+
+  <div class="text-center mb-4">
+    <h1 class="fw-bold">About TaskZap</h1>
+    <h4 class="text-muted">Creator: Zebastian Rodriguez</h4>
+  </div>
+
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <p class="lead">
+        This project is my first full-stack build since graduating from the
+        General Assembly Software Engineering Bootcamp. TaskZap was created to
+        reinforce ongoing Python and Django practice by rebuilding a project
+        completely from scratch. The goal was to design something simple and
+        useful for everyday tasks, yet flexible enough to grow with more advanced
+        features over time. It also served as an opportunity to explore
+        Bootstrap and strengthen front-end styling skills.
+      </p>
+
+      <p>
+        Above all, TaskZap stands as a personal challenge to keep learning, stay
+        motivated, and continue progressing toward a future as a full-time
+        developer.
+      </p>
+    </div>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h3 class="fw-bold">Explore More of My Work</h3>
+      <p>Feel free to check out my other projects or connect with me below:</p>
+
+      <ul class="list-unstyled">
+        <li class="mb-2">
+          <a href="https://www.linkedin.com/in/zebastian-rodriguez-480191309/" target="_blank" class="btn btn-primary">
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/Zebyrod" target="_blank" class="btn btn-dark">
+            GitHub
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
