@@ -8,9 +8,14 @@ from django.http import HttpResponse
 # Create your views here.
 
 # Define the home view function
+# def home(request):
+#  I start off with this to ensure my route is working later I remove this and create the actual home route.
+#     # Send a simple HTML response
+#     return HttpResponse('<h1>Hello ᓚᘏᗢ</h1>')
+
 def home(request):
-    # Send a simple HTML response
-    return HttpResponse('<h1>Hello ᓚᘏᗢ</h1>')
+    # Render the Home Page
+    return render(request, 'home.html')
 
 def about(request):
     # When navigating to /about return the about.html template
@@ -33,4 +38,6 @@ tasks = [
 def task_index(request):
     # Render the tasks/index.html with the task list data
     return render(request, 'tasks/index.html', {'tasks': tasks})
+
+
 
