@@ -17,11 +17,25 @@
     <div class="card h-100 shadow-sm">
       <div class="card-body">
         <h5 class="card-title">{{ task.name }}</h5>
+
+        <!-- CHECKLIST ITEMS -->
         <ul class="list-group list-group-flush mb-3">
-          {% for item in task.description %}
-          <li class="list-group-item">{{ item }}</li>
+          {% for item in task.items %}
+          <li class="list-group-item d-flex align-items-center">
+            <input
+              type="checkbox"
+              class="form-check-input me-2"
+              {% if item.is_complete %}checked{% endif %}
+              disabled
+            />
+            <span class="{% if item.is_complete %}text-decoration-line-through text-muted{% endif %}">
+              {{ item.text }}
+            </span>
+          </li>
           {% endfor %}
         </ul>
+
+        <!-- TASK STATUS -->
         <p class="card-text">
           Status:
           {% if task.is_complete %}
