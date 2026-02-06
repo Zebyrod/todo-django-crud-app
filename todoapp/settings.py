@@ -74,10 +74,13 @@ WSGI_APPLICATION = 'todoapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# After creating my database I am now replacing the SQLite settings with PostgreSQL settings
+# This is to connect my created database of taskzap into the settings of the application
+# I am basically telling the application to use a PostegreSQL database named taskzap for storing all data
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'taskzap',
     }
 }
 

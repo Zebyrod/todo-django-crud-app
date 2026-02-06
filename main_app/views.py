@@ -2,6 +2,9 @@
 
 from django.shortcuts import render
 
+# Import models 
+from .models import Task
+
 # Import HttpResponse to send text-based responses
 from django.http import HttpResponse
 
@@ -68,6 +71,7 @@ tasks = [
 
 def task_index(request):
     # Render the tasks/index.html with the task list data
+    tasks = Task.objects.all()
     return render(request, 'tasks/index.html', {'tasks': tasks})
 
 
