@@ -18,8 +18,8 @@ class ChecklistItem(models.Model):
         on_delete=models.CASCADE,
         related_name='items'
     )
-    text = models.CharField(max_length=200)
+    description = models.CharField(max_length=200)
     is_complete = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.text
+        return self.description
