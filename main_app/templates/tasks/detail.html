@@ -1,0 +1,18 @@
+<!-- main_app/templates/tasks/detail.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ task.name }}</h1>
+
+<ul>
+  {% for item in task.items.all %}
+    <li>
+      {% if item.is_complete %}✅{% else %}⬜{% endif %}
+      {{ item.description }}
+    </li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'task-index' %}">← Back to tasks</a>
+{% endblock %}
