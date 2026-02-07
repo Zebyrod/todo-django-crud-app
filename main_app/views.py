@@ -1,11 +1,13 @@
 # main_app/views.py
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Import models 
 from .models import Task
 from .models import ChecklistItem
 
+# import forms
+from .forms import TaskForm
 
 # Create your views here.
 
@@ -28,5 +30,19 @@ def task_detail(request, task_id):
     task = Task.objects.get(id=task_id)
     return render(request, 'tasks/detail.html', { 'task': task })
 
+def task_create(request):
+    # First I check the form was submitted/POST correctly
+    if request.method == 'POST':
+        # Next this is binding the user input
+        form = TaskForm(request.POST)
+        # Running validation on the form 
+        if form.is_valid():
+        # Save the user input if the form is valid
+            form.save()
+        # Redirect will help avoid resubmitting on refresh
+            return redirect('task-index')
+    else:
+        form = TaskForm()
 
+    return render(request, 'tasks/task_form.html', {'form': form })
 

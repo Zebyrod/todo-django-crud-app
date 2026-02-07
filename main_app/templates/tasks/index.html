@@ -2,8 +2,10 @@
 <link rel="stylesheet" href="{% static 'css/tasks/task-index.css' %}" />
 {% endblock %} {% block content %}
 
-<section class="mb-4">
-	<h1 class="text-center">Task List</h1>
+<section class="mb-4 d-flex justify-content-between align-items-center">
+	<h1 class="mb-0">Task List</h1>
+
+  <a href="{% url 'task-create' %}" class="btn  btn-success">+ New Task</a>
 </section>
 
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
