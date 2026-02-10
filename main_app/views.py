@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 
 # Import models 
 from .models import Task
-from .models import ChecklistItem
+from .models import SubTask
 
 # import forms
 from .forms import TaskForm

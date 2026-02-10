@@ -9,14 +9,14 @@ class Task(models.Model):
     def __str__(self):
         return self.name
 
-class ChecklistItem(models.Model):
+class SubTask(models.Model):
     # I am using ForeignKey here to create the relationship between my 2 models
     # I want each check list item to belong to a task. 
     # By using on_delete, this should also delete the items if a task gets deleted by the user
     task = models.ForeignKey(
         Task,
         on_delete=models.CASCADE,
-        related_name='items'
+        related_name='subtasks'
     )
     description = models.CharField(max_length=200)
     is_complete = models.BooleanField(default=False)
