@@ -20,7 +20,7 @@ def about(request):
     # When navigating to /about return the about.html template
     return render(request, 'about.html')
 
-
+#  TASK FUNCTION BASED VIEWS 
 def task_index(request):
     # Render the tasks/index.html with the task list data
     tasks = Task.objects.all()
@@ -56,5 +56,15 @@ def task_update(request, task_id):
     else: 
         form = TaskForm(instance=task)
     return render(request, 'tasks/task_form.html', {'form': form, 'task': task})
+
+def task_delete(request, task_id):
+    task = Task.objects.get(id=task_id)
+    if request.method == 'POST':
+        task.delete()
+        return redirect('task-index')
+    return render(request, 'tasks/task_confirm_delete.html', {'task': task})
+
+# ChecklistItem Function Based Views
+    
 
 
