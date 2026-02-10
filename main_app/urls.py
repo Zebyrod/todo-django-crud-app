@@ -7,7 +7,10 @@ urlpatterns = [
     # Routes will be added here
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
+
+    # TASK URLS
     path('tasks/', views.task_index, name='task-index'),
+    path('tasks/create/', views.task_create, name='task-create'),
     path('tasks/<int:task_id>/', views.task_detail, name='task-detail'),
-    path('tasks/new/', views.task_create, name='task-create'),
+    path('tasks/<int:task_id>/edit', views.task_update, name='task-edit'),
 ]

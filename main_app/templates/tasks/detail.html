@@ -5,6 +5,12 @@
 {% block content %}
 <h1>{{ task.name }}</h1>
 
+<div class="mb-3">
+  <a href="{% url 'task-edit' task.pk %}" class="btn btn-warning me-2" aria-label="Edit Task">Edit Task</a>
+
+
+</div>
+
 <ul>
   {% for item in task.items.all %}
     <li>
