@@ -28,7 +28,13 @@ def task_index(request):
 
 def task_detail(request, task_id):
     task = Task.objects.get(id=task_id)
-    return render(request, 'tasks/detail.html', { 'task': task })
+    subtasks = SubTask.objects.filter(task=task)
+    # subtask_form = SubTask(Form)
+    return render(request, 'tasks/detail.html', { 
+        'task': task, 
+        'subtasks': subtasks,
+        # 'subtask_form': subtask_form
+    })
 
 def task_create(request):
     # First I check the form was submitted/POST correctly
@@ -64,7 +70,15 @@ def task_delete(request, task_id):
         return redirect('task-index')
     return render(request, 'tasks/task_confirm_delete.html', {'task': task})
 
-# ChecklistItem Function Based Views
+# Subtask Function Based Views
+
+def subtask_list(request, task_id):
+    task = Task.objects.get(id=task_id)
+    subtasks = SubTask.objects.filter(task=task)
+    return render(request, 'subtasks/subtask_list.html', {
+        'task': task,
+        'subtasks': subtasks
+    })
     
 
 

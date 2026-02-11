@@ -1,0 +1,35 @@
+<!-- main_app/templates/subtasks/subtask_list.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container my-5">
+  <h1 class="mb-4">Subtasks for "{{ task.name }}"</h1>
+
+  {% if subtasks %}
+    <ul class="list-group mb-4">
+      {% for subtask in subtasks %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>{{ subtask.description }}</div>
+
+          <div>
+            <span class="badge {% if subtask.is_complete %}bg-success{% else %}bg-secondary{% endif %}">
+              {% if subtask.is_complete %}Completed{% else %}Pending{% endif %}
+            </span>
+
+            <!-- Edit / Delete Buttons -->
+            <!-- <a href="{% url 'subtask_update' subtask.id %}" class="btn btn-sm btn-outline-warning ms-2">Edit</a>
+            <a href="{% url 'subtask_delete' subtask.id %}" class="btn btn-sm btn-outline-danger ms-2">Delete</a> -->
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No subtasks yet.</p>
+  {% endif %}
+
+  <!-- Action Buttons -->
+  <!-- <a href="{% url 'subtask_create' task.id %}" class="btn btn-primary me-2">Add Subtask</a> -->
+  <a href="{% url 'task-detail' task.id %}" class="btn btn-secondary">Back to Task</a>
+</section>
+{% endblock %}

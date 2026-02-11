@@ -14,5 +14,7 @@ urlpatterns = [
     path('tasks/<int:task_id>/', views.task_detail, name='task-detail'),
     path('tasks/<int:task_id>/edit', views.task_update, name='task-edit'),
     path('tasks/<int:task_id>/delete/', views.task_delete, name='task-delete'),
-    
+
+    # SUBTASK URLS
+    path('tasks/<int:task_id>/subtasks/', views.subtask_list, name='subtask-list'),
 ]

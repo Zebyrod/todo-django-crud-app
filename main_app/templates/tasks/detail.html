@@ -1,24 +1,35 @@
-<!-- main_app/templates/tasks/detail.html -->
+<!-- main_app/templates/detail.html -->
+ <!-- Large refactor to this file to try and match the structure I had set up in my flavorly project which I was following -->
+
 
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ task.name }}</h1>
+<section class="container my-5">
+  <h1 class="mb-4">Task: {{ task.name }}</h1>
 
-<div class="mb-3">
-  <a href="{% url 'task-edit' task.pk %}" class="btn btn-warning me-2" aria-label="Edit Task">Edit Task</a>
-  <a href="{% url 'task-delete' task.pk %}" class="btn btn-danger" aria-label="Delete Task">Delete Task</a>
+  <h4 class="mb-3">
+    <strong>Status:</strong>
+    {% if task.is_complete %}Completed{% else %}In Progress{% endif %}
+  </h4>
 
-</div>
+  <!-- Subtask List (minimal) -->
+  <ul class="list-group mb-4">
+    {% for subtask in task.subtasks.all %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>{{ subtask.description }}</div>
+        <span class="badge {% if subtask.is_complete %}bg-success{% else %}bg-secondary{% endif %}">
+          {% if subtask.is_complete %}Completed{% else %}Pending{% endif %}
+        </span>
+      </li>
+    {% empty %}
+      <li class="list-group-item">No subtasks yet.</li>
+    {% endfor %}
+  </ul>
 
-<ul>
-  {% for item in task.items.all %}
-    <li>
-      {% if item.is_complete %}✅{% else %}⬜{% endif %}
-      {{ item.description }}
-    </li>
-  {% endfor %}
-</ul>
-
-<a href="{% url 'task-index' %}">← Back to tasks</a>
+  <!-- Action Buttons -->
+  <a href="{% url 'subtask-list' task.id %}" class="btn btn-primary me-2">Manage Subtasks</a>
+  <a href="{% url 'task-index' %}" class="btn btn-secondary">Back to Tasks</a>
+</section>
 {% endblock %}
+
