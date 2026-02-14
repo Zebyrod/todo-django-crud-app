@@ -1,0 +1,30 @@
+<!-- main_app/templates/subtask/subtask_form.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/subtasks/subtask-form.css' %}" />
+{% endblock %}
+
+{% block content %}
+<section class="container my-5">
+  <h1 class="mb-4">
+    {{ form.instance.pk|yesno:"Edit SubTask,Create SubTask" }}
+  </h1>
+
+  <form method="POST" novalidate>
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary mt-3">
+      {{ form.instance.pk|yesno:'Save SubTask,Add SubTask' }}
+    </button>
+
+    <a href="{% url 'subtask-list' task.id %}" 
+       class="btn btn-secondary mt-3 ms-2">
+      Cancel
+    </a>
+  </form>
+</section>
+{% endblock %}

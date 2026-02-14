@@ -7,3 +7,7 @@ class TaskForm(forms.ModelForm):
         model = Task
         fields = ['name']
 
+class SubTaskForm(forms.ModelForm):
+    class Meta:
+        model = SubTask
+        fields = ['description', 'is_complete']

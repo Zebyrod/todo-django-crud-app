@@ -8,6 +8,7 @@ from .models import SubTask
 
 # import forms
 from .forms import TaskForm
+from .forms import SubTaskForm
 
 # Create your views here.
 
@@ -80,5 +81,20 @@ def subtask_list(request, task_id):
         'subtasks': subtasks
     })
     
-
+def subtask_create(request, task_id):
+    task = Task.objects.get(id=task_id)
+    if request.method == "POST":
+        form = SubTaskForm(request.POST)
+        if form.is_valid():
+            subtask = form.save(commit=False)
+            subtask.task = task
+            subtask.save()
+            return redirect('subtask-list', task_id=task.id)
+    else: 
+        form = SubTaskForm()
+    return render(request, 'subtasks/subtask_form.html', {
+        'form': form,
+        'task': task
+    })
+    
 

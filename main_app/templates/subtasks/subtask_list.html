@@ -29,7 +29,7 @@
   {% endif %}
 
   <!-- Action Buttons -->
-  <!-- <a href="{% url 'subtask_create' task.id %}" class="btn btn-primary me-2">Add Subtask</a> -->
+  <a href="{% url 'subtask-create' task.id %}" class="btn btn-primary me-2">Add Subtask</a>
   <a href="{% url 'task-detail' task.id %}" class="btn btn-secondary">Back to Task</a>
 </section>
 {% endblock %}
