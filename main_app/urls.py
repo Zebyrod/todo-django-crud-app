@@ -18,4 +18,7 @@ urlpatterns = [
     # SUBTASK URLS
     path('tasks/<int:task_id>/subtasks/', views.subtask_list, name='subtask-list'),
     path('tasks/<int:task_id>/subtasks/add/', views.subtask_create, name='subtask-create'),
+    path('tasks/<int:task_id>/subtasks/<int:subtask_id>/delete/', views.subtask_delete, name='subtask-delete'),
+
+
 ]

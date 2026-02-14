@@ -1,0 +1,17 @@
+<!-- main_app/templates/subtasks/subtask_confirm_delete.html -->
+
+{% extends 'base.html' %}
+{% block content %}
+<section class="container my-5">
+    <h2 class="mb-4">Confirm Delete Subtask</h2>
+        <p>
+            Are you sure you want to delete the subtask: <strong>{{ subtask.name }}</strong>?
+        </p>
+
+        <form method="POST">
+            {% csrf_token %}
+        <button type="submit" class="btn btn-danger me-2">Yes, Delete</button>
+        <a href="{% url 'subtask-list' task.id %}" class="btn btn-secondary">Cancel</a>
+        </form>
+</section>
+{% endblock %}

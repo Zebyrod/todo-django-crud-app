@@ -17,9 +17,9 @@
               {% if subtask.is_complete %}Completed{% else %}Pending{% endif %}
             </span>
 
-            <!-- Edit / Delete Buttons -->
-            <!-- <a href="{% url 'subtask_update' subtask.id %}" class="btn btn-sm btn-outline-warning ms-2">Edit</a>
-            <a href="{% url 'subtask_delete' subtask.id %}" class="btn btn-sm btn-outline-danger ms-2">Delete</a> -->
+            <!-- Delete Button -->
+            
+            <a href="{% url 'subtask-delete'  task.id subtask.id %}" class="btn btn-sm btn-outline-danger ms-2">Delete</a>
           </div>
         </li>
       {% endfor %}

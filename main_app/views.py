@@ -96,5 +96,18 @@ def subtask_create(request, task_id):
         'form': form,
         'task': task
     })
+
+def subtask_delete(request, task_id, subtask_id):
+    task = Task.objects.get(id=task_id)
+    subtask = SubTask.objects.get(id=subtask_id, task=task)
+
+    if request.method == 'POST':
+        subtask.delete()
+        return redirect('subtask-list', task_id=task.id)
+
+    return render(request, 'subtasks/subtask_confirm_delete.html', {
+        'subtask': subtask,
+        'task': task
+    })
     
 
