@@ -7,7 +7,6 @@ class TaskForm(forms.ModelForm):
         model = Task
         fields = [
             'name',
-            'description',
             'priority',
             'due_date',
             'is_complete'
@@ -25,6 +24,8 @@ class SubTaskForm(forms.ModelForm):
         model = SubTask
         fields = [
             'description', 
-            'order'
+            'order',
             'is_complete',
             ]
+
+        # I want the completed_at to be automatically tracked and updated when the user is checking off the tasks as completed which is why it is not in this model

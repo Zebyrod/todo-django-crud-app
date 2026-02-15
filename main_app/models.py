@@ -42,7 +42,8 @@ class SubTask(models.Model):
 
 #  Adding in ordering of the SubTasks is a big want for me
 # I am implementing priority for the overall tasks but there can still be priority within the subtasks as well
-    order = models.PositiveIntegerField(default=0)
+# I added this and the Meta class as the bottom to ensure the order had to be one or higher and multiple subtasks could not be listed at the same order value
+    order = models.PositiveIntegerField(default=1)
 
     is_complete = models.BooleanField(default=False)
     # I wanted to add the completed_at as a way to track data within the app. Hopefully as I scale the application this can be used

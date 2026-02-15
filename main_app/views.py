@@ -6,9 +6,12 @@ from django.shortcuts import render, redirect
 from .models import Task
 from .models import SubTask
 
-# import forms
+# Import forms
 from .forms import TaskForm
 from .forms import SubTaskForm
+
+# Importing the timezone from utils
+from django.utils import timezone
 
 # Create your views here.
 
@@ -88,6 +91,11 @@ def subtask_create(request, task_id):
         if form.is_valid():
             subtask = form.save(commit=False)
             subtask.task = task
+            
+            # this if statement should update the completed_at when the subtask is marked as completed
+            if subtask.is_complete:
+                subtask.completed_at = timezone.now()
+
             subtask.save()
             return redirect('subtask-list', task_id=task.id)
     else: 

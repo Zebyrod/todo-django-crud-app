@@ -5,7 +5,7 @@
 <section class="mb-4 d-flex justify-content-between align-items-center">
 	<h1 class="mb-0">Task List</h1>
 
-  <a href="{% url 'task-create' %}" class="btn  btn-success">+ New Task</a>
+	<a href="{% url 'task-create' %}" class="btn btn-success">+ New Task</a>
 </section>
 
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -17,27 +17,52 @@
 					<a href="{% url 'task-detail' task.id %}"> {{ task.name }} </a>
 				</h5>
 
-				<!-- CHECKLIST ITEMS -->
+				<!--Priority -->
+				<p class="mb-2">
+					<strong>Priority:</strong>
+					{% if task.priority == "H" %}
+					<span class="badge bg-danger">High</span>
+					{% elif task.priority == "M" %}
+					<span class="badge bg-warning text-dark">Medium</span>
+					{% else %}
+					<span class="badge bg-success">Low</span>
+					{% endif %}
+				</p>
+
+				<!-- Due Date -->
+				{% if task.due_date %}
+				<p class="mb-2">
+					<strong>Due:</strong> {{ task.due_date|date:"M d, Y g:i A" }}
+				</p>
+				{% endif %}
+
+				<!-- Subtask List -->
 				<ul class="list-group list-group-flush mb-3">
-					{% for item in task.items.all %}
+					{% for subtask in task.subtasks.all %}
 					<li class="list-group-item d-flex align-items-center">
 						<input
 							type="checkbox"
 							class="form-check-input me-2"
 							{%
 							if
-							item.is_complete
+							subtask.is_complete
 							%}checked{%
 							endif
 							%}
 							disabled
 						/>
 						<span
-							class="{% if item.is_complete %}text-decoration-line-through text-muted{% endif %}"
+							class="{% if subtask.is_complete %}text-decoration-line-through text-muted{% endif %}"
 						>
-							{{ item.description }}
+							{{ subtask.description }} {% if subtask.completed_at %}
+							<small class="text-muted ms-1">
+								(Completed: {{ subtask.completed_at|date:"M d, Y" }})
+							</small>
+							{% endif %}
 						</span>
 					</li>
+					{% empty %}
+					<li class="list-group-item">No subtasks yet.</li>
 					{% endfor %}
 				</ul>
 

@@ -8,16 +8,50 @@
 <section class="container my-5">
   <h1 class="mb-4">Task: {{ task.name }}</h1>
 
+   <!-- Status -->
   <h4 class="mb-3">
     <strong>Status:</strong>
     {% if task.is_complete %}Completed{% else %}In Progress{% endif %}
   </h4>
 
-  <!-- Subtask List (minimal) -->
+   <!-- Priority -->
+  <p class="mb-3">
+    <strong>Priority:</strong>
+    {% if task.priority == "H" %}
+      <span class="badge bg-danger">High</span>
+    {% elif task.priority == "M" %}
+      <span class="badge bg-warning text-dark">Medium</span>
+    {% else %}
+      <span class="badge bg-success">Low</span>
+    {% endif %}
+  </p>
+
+  <!-- Due Date -->
+    {% if task.due_date %}
+     <p class="mb-3">
+       <strong>Due Date:</strong> {{ task.due_date|date:"M d, Y g:i A" }}
+     </p>
+   {% endif %}
+  
+  <!-- Created / Updated -->
+
+   <p class="mb-4">
+    <small class="text-muted">
+      Created: {{ task.created_at|date:"M d, Y g:i A" }} <br>
+      Last Updated: {{ task.updated_at|date:"M d, Y g:i A" }}
+    </small>
+  </p>
+
+  <!-- Subtask List -->
   <ul class="list-group mb-4">
     {% for subtask in task.subtasks.all %}
       <li class="list-group-item d-flex justify-content-between align-items-center">
-        <div>{{ subtask.description }}</div>
+        <div>
+           {{ forloop.counter }}. {{ subtask.description }}
+          {% if subtask.completed_at %}
+          <small class="text-muted ms-2">(Completed: {{ subtask.completed_at|date:"M d, Y g:i A" }})</small>
+          {% endif %}
+        </div>
         <span class="badge {% if subtask.is_complete %}bg-success{% else %}bg-secondary{% endif %}">
           {% if subtask.is_complete %}Completed{% else %}Pending{% endif %}
         </span>
@@ -30,6 +64,9 @@
   <!-- Action Buttons -->
   <a href="{% url 'subtask-list' task.id %}" class="btn btn-primary me-2">Manage Subtasks</a>
   <a href="{% url 'task-index' %}" class="btn btn-secondary">Back to Tasks</a>
+
+  <!-- Delete Button -->
+   <a href="{% url 'task-delete' task.id %}" class="btn btn-danger">Delete Task</a>
 </section>
 {% endblock %}
 
