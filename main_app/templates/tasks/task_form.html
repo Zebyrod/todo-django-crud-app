@@ -10,12 +10,34 @@
 	<form method="POST">
 		{% csrf_token %}
 
+        <!-- Name -->
         <div class="mb-3">
             {{ form.name.label_tag }}
             {{ form.name }}
         </div>
 
+        <!-- Priority -->
+         <div class="mb-3">
+            {{ form.priority.label_tag }}
+            {{ form.priority }}
+         </div>
+
+        <!-- Due date -->
+        <div class="mb-3">
+            {{ form.due_date.label_tag }}
+            {{ form.due_date }}
+        </div>
+
+        <!-- Completion -->
+         <div class="form-check mb-3">
+            {{ form.is_complete }}
+            {{ form.is_complete.label_tag }}
+         </div>
+
 		<button type="submit" class="btn btn-primary">{{ form.instance.pk|yesno:'Update Task,Create Task' }}</button>
+
+        <a href="{% url 'task-index' %}" class="btn btn-secondary ms-2">Cancel</a>
+
 	</form>
 </section>
 
