@@ -2,6 +2,11 @@
 
 from django.shortcuts import render, redirect
 
+# Import the built in auth and login 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
+from django.contrib.auth.form import userCreationForm
+
 # Import models 
 from .models import Task
 from .models import SubTask
@@ -91,7 +96,7 @@ def subtask_create(request, task_id):
         if form.is_valid():
             subtask = form.save(commit=False)
             subtask.task = task
-            
+
             # this if statement should update the completed_at when the subtask is marked as completed
             if subtask.is_complete:
                 subtask.completed_at = timezone.now()

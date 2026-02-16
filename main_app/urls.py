@@ -1,6 +1,6 @@
 # main_app/urls.py
 
-from django.urls import path
+from django.urls import path, include
 from . import views # Import views to connect routes to view functions
 
 urlpatterns = [
