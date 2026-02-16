@@ -15,7 +15,25 @@
 
   <form method="POST" novalidate>
     {% csrf_token %}
-    {{ form.as_p }}
+    
+
+    <!-- Description -->
+     <div class="mb-3">
+        {{ form.description.label_tag }}
+        {{ form.description }}
+     </div>
+
+    <!-- Order -->
+     <div class="mb-3">
+        {{ form.order.label_tag }}
+        {{ form.order }}
+     </div>
+
+    <!-- Completion -->
+     <div class="form-check mb-3">
+        {{ form.is_complete }}
+        {{ form.is_complete.label_tag }}
+     </div>
 
     <button type="submit" class="btn btn-primary mt-3">
       {{ form.instance.pk|yesno:'Save SubTask,Add SubTask' }}
