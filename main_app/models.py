@@ -56,14 +56,6 @@ class SubTask(models.Model):
     completed_at = models.DateTimeField(null=True, blank=True)
 
 
-    # This custom function should automatically increment the order when a new one is created. This should prevent me from having database issues in the future as I was having while tyring to migrate User into the databases
-    # Was unsure how to solve this issue I just used AI to ask it for a solution and tried this code out that happened to fix the issue I was having
-    def save(self, *args, **kwargs):
-        if not self.pk:  # only for new subtasks
-            last_order = SubTask.objects.filter(task=self.task).aggregate(Max('order'))['order__max'] or 0
-            self.order = last_order + 1
-        super().save(*args, **kwargs)
-
     def __str__(self):
         return self.description
 

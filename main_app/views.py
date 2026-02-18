@@ -39,11 +39,11 @@ def task_index(request):
 def task_detail(request, task_id):
     task = Task.objects.get(id=task_id)
     subtasks = SubTask.objects.filter(task=task)
-    subtask_form = SubTask(Form)
+    # subtask_form = SubTask(Form)
     return render(request, 'tasks/detail.html', { 
         'task': task, 
         'subtasks': subtasks,
-        'subtask_form': subtask_form
+        # 'subtask_form': subtask_form
     })
 
 @login_required
@@ -59,7 +59,7 @@ def task_create(request):
         # Save the user input if the form is valid
             form.save()
         # Redirect will help avoid resubmitting on refresh
-            return redirect('task-detail')
+            return redirect('task-detail', task_id=task.id)
     else:
         form = TaskForm()
 
