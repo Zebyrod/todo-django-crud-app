@@ -20,7 +20,6 @@ from django.utils import timezone
 
 # Create your views here.
 
-
 def home(request):
     # Render the Home Page
     return render(request, 'home.html')
@@ -33,18 +32,18 @@ def about(request):
 @login_required
 def task_index(request):
     # Render the tasks/index.html with the task list data
-    tasks = Task.objects.all()
+    tasks = Task.objects.filter(user=request.user)
     return render(request, 'tasks/index.html', {'tasks': tasks})
 
 @login_required
 def task_detail(request, task_id):
     task = Task.objects.get(id=task_id)
     subtasks = SubTask.objects.filter(task=task)
-    # subtask_form = SubTask(Form)
+    subtask_form = SubTask(Form)
     return render(request, 'tasks/detail.html', { 
         'task': task, 
         'subtasks': subtasks,
-        # 'subtask_form': subtask_form
+        'subtask_form': subtask_form
     })
 
 @login_required
@@ -55,10 +54,12 @@ def task_create(request):
         form = TaskForm(request.POST)
         # Running validation on the form 
         if form.is_valid():
+            task = form.save(commit=False)
+            task.user = request.user
         # Save the user input if the form is valid
             form.save()
         # Redirect will help avoid resubmitting on refresh
-            return redirect('task-index')
+            return redirect('task-detail')
     else:
         form = TaskForm()
 
@@ -67,6 +68,10 @@ def task_create(request):
 @login_required
 def task_update(request, task_id):
     task = Task.objects.get(id=task_id)
+    # This should function as a simple permission check to ensure user is logged in
+    if task.user != request.user:
+        return redirect('task-index')
+
     if request.method == 'POST':
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
@@ -79,6 +84,8 @@ def task_update(request, task_id):
 @login_required
 def task_delete(request, task_id):
     task = Task.objects.get(id=task_id)
+    if task.user != request.user:
+        return redirect('task-index')
     if request.method == 'POST':
         task.delete()
         return redirect('task-index')
