@@ -66,6 +66,7 @@
   <a href="{% url 'task-index' %}" class="btn btn-secondary">Back to Tasks</a>
 
   <!-- Delete Button -->
+   <a href="{% url 'task-edit' task.id %}" class="btn btn-secondary">Update Task</a>
    <a href="{% url 'task-delete' task.id %}" class="btn btn-danger">Delete Task</a>
 </section>
 {% endblock %}

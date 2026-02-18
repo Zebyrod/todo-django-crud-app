@@ -61,6 +61,4 @@ class SubTask(models.Model):
 
     class Meta:
         ordering = ['order']
-        constraints = [
-            models.UniqueConstraint(fields=['task', 'order'], name='unique_order_per_task')
-        ]
+       
