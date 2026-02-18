@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 # Import the built in auth and login 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
-from django.contrib.auth.form import userCreationForm
+from django.contrib.auth.forms import UserCreationForm
 
 # Import models 
 from .models import Task
@@ -30,11 +30,13 @@ def about(request):
     return render(request, 'about.html')
 
 #  TASK FUNCTION BASED VIEWS 
+@login_required
 def task_index(request):
     # Render the tasks/index.html with the task list data
     tasks = Task.objects.all()
     return render(request, 'tasks/index.html', {'tasks': tasks})
 
+@login_required
 def task_detail(request, task_id):
     task = Task.objects.get(id=task_id)
     subtasks = SubTask.objects.filter(task=task)
@@ -45,6 +47,7 @@ def task_detail(request, task_id):
         # 'subtask_form': subtask_form
     })
 
+@login_required
 def task_create(request):
     # First I check the form was submitted/POST correctly
     if request.method == 'POST':
@@ -61,6 +64,7 @@ def task_create(request):
 
     return render(request, 'tasks/task_form.html', {'form': form })
 
+@login_required
 def task_update(request, task_id):
     task = Task.objects.get(id=task_id)
     if request.method == 'POST':
@@ -72,6 +76,7 @@ def task_update(request, task_id):
         form = TaskForm(instance=task)
     return render(request, 'tasks/task_form.html', {'form': form, 'task': task})
 
+@login_required
 def task_delete(request, task_id):
     task = Task.objects.get(id=task_id)
     if request.method == 'POST':
@@ -81,6 +86,7 @@ def task_delete(request, task_id):
 
 # Subtask Function Based Views
 
+@login_required
 def subtask_list(request, task_id):
     task = Task.objects.get(id=task_id)
     subtasks = SubTask.objects.filter(task=task)
@@ -88,7 +94,8 @@ def subtask_list(request, task_id):
         'task': task,
         'subtasks': subtasks
     })
-    
+
+@login_required    
 def subtask_create(request, task_id):
     task = Task.objects.get(id=task_id)
     if request.method == "POST":
@@ -110,6 +117,8 @@ def subtask_create(request, task_id):
         'task': task
     })
 
+
+@login_required
 def subtask_delete(request, task_id, subtask_id):
     task = Task.objects.get(id=task_id)
     subtask = SubTask.objects.get(id=subtask_id, task=task)
@@ -123,4 +132,16 @@ def subtask_delete(request, task_id, subtask_id):
         'task': task
     })
     
+# SIGN UP View
 
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        # If the form is valid then save the user into the database and log them in
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+    else: 
+        form = UserCreationForm()
+    return render(request, 'registration/signup.html', { 'form': form }) 
