@@ -3,7 +3,8 @@
 
   /* Overall body */
   body {
-    background-color: #2A2F3A;
+    background: radial-gradient(circle at top left, #3A4452 0%, #2A2F3A 40%, #1F262D 100%);
+    min-height: 100vh;
     color: #F5F5F5;
     font-family: 'Arial', sans-serif;
   }
@@ -17,11 +18,17 @@
     font-weight: bold;
   }
   .navbar-nav .nav-link {
-    color: #E0E0E0 !important;
+    color: #F8F9FA !important;
+    transition: all 0.2s ease-in-out;
   }
   .navbar-nav .nav-link:hover {
-    color: #4A90E2 !important; /* blue hover effect */
+   color: #4A90E2 !important;
+    text-shadow: 0 0 8px rgba(74, 144, 226, 0.8);
   }
+
+  .custom-navbar {
+  background-color: #1B2128;
+}
 
   /* Buttons */
   .btn {
@@ -31,18 +38,41 @@
   .btn-primary {
     background-color: #4A90E2;
     border: none;
-    color: #fff;
+    color: #FFFFFF;
+    transition: all 0.2s ease-in-out;
   }
   .btn-primary:hover {
     background-color: #357ABD;
+    box-shadow: 0 0 12px rgba(74, 144, 226, 0.8),
+                0 0 20px rgba(74, 144, 226, 0.5);
+    transform: translateY(-2px);
   }
+
+  .btn-secondary {
+  background-color: #3B4450;
+  border: none;
+  color: #F8F9FA;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-secondary:hover {
+  background-color: #4A5568;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
 
   /* Cards or sections */
   .card {
-    background-color: #3B4450;
+    background-color: #343C47;
     border: none;
-    color: #E0E0E0;
+    color: #F8F9FA;
+    transition: 0.2s ease-in-out;
   }
+
+  .card:hover {
+  box-shadow: 0 0 15px rgba(74, 144, 226, 0.4);
+  transform: translateY(-3px);
+}
 
   /* Links */
   a {
@@ -53,3 +83,49 @@
     color: #FFD700;
     text-decoration: underline;
   }
+
+  /* Thunder Form Inputs */
+form input,
+form select,
+form textarea {
+  background-color: #2F3742;
+  border: 1px solid #3F4A57;
+  color: #F8F9FA;
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Placeholder color */
+form input::placeholder,
+form textarea::placeholder {
+  color: #9CA3AF;
+}
+
+/* Focus lightning effect */
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: none;
+  border-color: #4A90E2;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.8);
+  background-color: #343C47;
+}
+
+form label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #E5E7EB;
+  display: block;
+}
+
+.form-check-input {
+  background-color: #2F3742;
+  border: 1px solid #4A90E2;
+}
+
+.form-check-input:checked {
+  background-color: #4A90E2;
+  border-color: #4A90E2;
+}
