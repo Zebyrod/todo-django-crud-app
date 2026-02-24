@@ -2,16 +2,20 @@
 
 {% extends 'base.html' %}
 {% block content %}
-<section class="container my-5">
-    <h2 class="mb-4">Confirm Delete Subtask</h2>
-        <p>
-            Are you sure you want to delete the subtask: <strong>{{ subtask.name }}</strong>?
-        </p>
+<section class="container my-5 d-flex justify-content-center">
+    <div class="thunder-modal-card p-5 text-center">
 
-        <form method="POST">
-            {% csrf_token %}
-        <button type="submit" class="btn btn-danger me-2">Yes, Delete</button>
-        <a href="{% url 'subtask-list' task.id %}" class="btn btn-secondary">Cancel</a>
-        </form>
+        <h2 class="thunder-modal-title mb-4">Confirm Delete Subtask</h2>
+            <p>
+                Are you sure you want to delete the subtask: <strong class="delete-item-name">{{ subtask.name }}</strong>?
+            </p>
+    
+            <form method="POST" class="d-flex justify-content-center gap-3">
+                {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            <a href="{% url 'subtask-list' task.id %}" class="btn btn-secondary">Cancel</a>
+            </form>
+
+    </div>
 </section>
 {% endblock %}

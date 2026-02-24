@@ -3,8 +3,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<section class="container my-5">
-     <div class="card p-4">
+<section class="container my-5 d-flex justify-content-center">
+     <div class="card p-4 thunder-form-card">
     <h1 class="mb-4">
         {{ form.instance.pk|yesno:'Edit Task,Create Task' }}
     </h1>

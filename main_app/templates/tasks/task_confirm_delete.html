@@ -4,14 +4,18 @@
 {% load static %}
 
 {% block content %}
-<section class="container my-5">
-  <h1 class="mb-4">Delete Task</h1>
-  <p class="lead">Are you sure you want to delete the task <strong>{{ task.name }}</strong>?</p>
+<section class="container my-5 d-flex justify-content-center">
+  <div class="thunder-modal-card p-5 text-center">
 
-  <form method="POST" class="d-flex gap-3">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Yes, delete</button>
-    <a href="{% url 'task-detail' task_id=task.id %}" class="btn btn-secondary">Cancel</a>
-  </form>
+    <h2 class=" thunder-modal-title mb-4">Confirm Delete</h2>
+    <p class="mb-4">Are you sure you want to delete the task <strong class="delete-item-name">{{ task.name }}</strong>?</p>
+  
+    <form method="POST" class="d-flex justify-content-center gap-3">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Yes, delete</button>
+      <a href="{% url 'task-detail' task_id=task.id %}" class="btn btn-secondary">Cancel</a>
+    </form>
+    
+  </div>
 </section>
 {% endblock %}

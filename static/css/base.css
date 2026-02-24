@@ -10,9 +10,6 @@
   }
 
   /* Navbar */
-  .navbar {
-    background-color: #1F262D; /* dark, contrasts with yellow text */
-  }
   .navbar-brand {
     color: #FFD700 !important; /* yellow brand name */
     font-weight: bold;
@@ -26,10 +23,7 @@
     text-shadow: 0 0 8px rgba(74, 144, 226, 0.8);
   }
 
-  .custom-navbar {
-  background-color: #1B2128;
-}
-
+  
   /* Buttons */
   .btn {
     color: #F5F5F5;
@@ -129,3 +123,197 @@ form label {
   background-color: #4A90E2;
   border-color: #4A90E2;
 }
+
+/* Thunder Form Card Layout */
+.thunder-form-card {
+  width: 100%;
+  max-width: 600px;  /* limits width */
+  border-radius: 16px;
+  position: relative;
+  transition: 0.3s ease-in-out;
+  border: 1px solid rgba(74, 144, 226, 0.3);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* Subtle lightning border glow */
+.thunder-form-card:hover {
+  box-shadow:
+    0 0 10px rgba(74, 144, 226, 0.5),
+    0 0 20px rgba(74, 144, 226, 0.3);
+}
+
+
+/* Heading lightning glow */
+.thunder-form-card h1 {
+  color: #FFFFFF;
+  text-shadow:
+    0 0 6px rgba(74, 144, 226, 0.6),
+    0 0 12px rgba(74, 144, 226, 0.3);
+  font-weight: 700;
+}
+
+/* Lightning Pulse Animation */
+@keyframes lightningPulse {
+  0% {
+    box-shadow: 0 0 0 rgba(74, 144, 226, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(74, 144, 226, 0.9),
+                0 0 25px rgba(74, 144, 226, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(74, 144, 226, 0.7);
+  }
+}
+
+/* Apply pulse to primary submit button */
+.thunder-form-card .btn-primary {
+  position: relative;
+  animation: lightningPulse 2.5s infinite ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+/* Stronger electric effect on hover */
+.thunder-form-card .btn-primary:hover {
+  animation: none;
+  box-shadow: 
+    0 0 18px rgba(74, 144, 226, 1),
+    0 0 30px rgba(74, 144, 226, 0.7);
+  transform: translateY(-2px);
+}
+
+/* Thunder Heading Underline */
+.thunder-form-card h1 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+/* Glowing animated underline */
+.thunder-form-card h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #4A90E2, #FFD700);
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.8);
+  transition: width 0.4s ease-in-out;
+}
+
+/* Expand underline on hover */
+.thunder-form-card h1:hover::after {
+  width: 100%;
+}
+
+
+/* Navbar lightning base */
+.custom-navbar {
+  position: relative;
+  background-color: #1B2128;
+  border-bottom: 1px solid rgba(74, 144, 226, 0.2);
+}
+
+/* Glowing lightning underline */
+.custom-navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #4A90E2,
+    #FFD700,
+    #4A90E2,
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: lightningFlow 6s linear infinite;
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.8);
+}
+
+/* Smooth flowing animation */
+@keyframes lightningFlow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+/* Thunder Delete Button */
+.btn-danger,
+.btn-outline-danger {
+  color: #FF6B6B !important;  /* brighter red */
+  border-color: #FF6B6B !important;
+  background-color: transparent;
+  transition: 0.2s ease-in-out;
+}
+
+/* Solid storm delete */
+.btn-danger {
+  background-color: #8B1E2D !important;
+  border: none;
+  color: #FFFFFF !important;
+}
+
+/* Hover effect */
+.btn-danger:hover,
+.btn-outline-danger:hover {
+  background-color: #C0392B !important;
+  border-color: #C0392B !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 10px rgba(255, 75, 75, 0.7);
+}
+
+/* Thunder Modal Card */
+.thunder-modal-card {
+  width: 100%;
+  max-width: 500px;
+  background-color: #2F3742;
+  border-radius: 16px;
+  border: 1px solid rgba(74, 144, 226, 0.3);
+  box-shadow:
+    0 0 20px rgba(0, 0, 0, 0.6),
+    0 0 15px rgba(74, 144, 226, 0.2);
+  transition: 0.3s ease-in-out;
+}
+
+/* Hover lightning glow */
+.thunder-modal-card:hover {
+  box-shadow:
+    0 0 25px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(74, 144, 226, 0.4);
+}
+
+/* Modal heading glow */
+.thunder-modal-title {
+  color: #FFFFFF;
+  text-shadow:
+    0 0 6px rgba(74, 144, 226, 0.7),
+    0 0 12px rgba(74, 144, 226, 0.4);
+  font-weight: 700;
+}
+
+/* Delete item highlight */
+.delete-item-name {
+  color: #FF6B6B;
+  text-shadow: 0 0 8px rgba(255, 75, 75, 0.6);
+  font-size: 1.1rem;
+}
+
+/* Stronger danger button for modal */
+.thunder-modal-card .btn-danger {
+  background-color: #8B1E2D;
+  border: none;
+  color: #FFFFFF;
+  transition: 0.2s ease-in-out;
+}
+
+.thunder-modal-card .btn-danger:hover {
+  background-color: #C0392B;
+  box-shadow: 0 0 15px rgba(255, 75, 75, 0.7);
+  transform: translateY(-2px);
+}
+
