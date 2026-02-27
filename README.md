@@ -43,7 +43,8 @@ The app is built using Python and the Django web framework, leveraging Django’
 * Secure, protected routes for authenticated users
 * REST Routes
 * Confirmation Pages for destructive actions
-* Nav Bar
+* Intuitive navigation system
+* Streamlined form handling with Django forms
 
 
 
@@ -53,29 +54,33 @@ The app is built using Python and the Django web framework, leveraging Django’
 *https://trello.com/b/GFecE0qq/taskzap-plan-board
 
 ## <a name="design"></a>Design
-* For the design of Flavorly, I decided to use Bootstrap as my CSS framework. I wanted to challenge myself by working with a CSS library and learn how to apply its layout and styling tools in a real project. It gave me a way to build the visual side of the app more efficiently, while still letting me adjust things to fit my own ideas.
+* TaskZap was designed around a bold thunder and lightning theme to reflect energy, momentum, and productivity. I wanted the visual identity of the application to feel powerful and dynamic — aligning with the idea that completing tasks should feel impactful. Dark gradient backgrounds, high-contrast typography, and sharp accent colors were intentionally chosen to create a modern interface that feels focused while minimizing distractions. The overall aesthetic reinforces the idea of “striking down” tasks efficiently.
 
-I went with a simple and clean layout because I wanted the main focus to be on the recipes. The pages are easy to navigate, and everything is kept neat and organized so users can view or manage their recipes without distractions.
+From a layout perspective, I implemented a card-based design using Bootstrap to clearly separate each task into its own visual container. This approach improves readability, creates strong visual hierarchy, and allows users to quickly scan their task list without feeling overwhelmed. The spacing, alignment, and consistent structure help maintain clarity while supporting responsive behavior across different screen sizes.
 
-In the future, I’d like to improve the look of the app by adding images for recipes and ingredients. I’m thinking of letting users upload their own photos or maybe connecting to a third-party API to automatically pull in related images.
+
 
 
 ## <a name="nextsteps"></a>Project Next Steps
 #### List of Future Features
-* Allow users to filter through recipes(other users and their own)
-* Allow users to favorite recipes and keep those highlighted at the top of their recipes
-* Add in a community page where users can share recipes with one another and top recipes can be showcased 
-* Allow users to upload their own images of the recipe 
-* Further styling of the application to fill in the blank space
+* Allow users to filter tasks by status (completed/incomplete), due date, or priority to improve organization and workflow efficiency
+* Introduce user roles such as “Admin” or “Manager” with the ability to assign tasks to other users, enabling collaborative task management.
+* Expand the data models to support multi-user task ownership and team-based workflows.
+* Implement automated reminders via email or SMS to help users stay on track with deadlines.
+* Add additional lightning-inspired themes and customizable visual modes (e.g., light mode, high-contrast mode)
 * Add multiple lighting modes (light/dark etc.)
+* Create a productivity dashboard with task completion statistics and visual insights.
 
 
 ## Github repository
 * You can view the repository:
-[Github.com](https://flavorly-54ac51c1c004.herokuapp.com)
+[Github.com](https://github.com/Zebyrod/todo-django-crud-app)
 * If unable to view please go live locally through VS Code
 
-[Flavorly](https://github.com/Zebyrod/flavorly)
+## Live link
+* You can view the deployed site here:
+[Taskzap]()
+* If unable to view please go live locally through VS Code 
 
 ## <a name="Zebastian Rodriguez"></a>The Developer
 * Zebastian [GitHub](https://github.com/Zebyrod) [LinkedIn](https://www.linkedin.com/in/zebastian-rodriguez-480191309/)
@@ -84,7 +89,9 @@ I started learning to code on my own, just out of curiosity. What began as a per
 
 The course was challenging — there were definitely moments where I was pushed outside my comfort zone — but that’s exactly what made it so valuable. It gave me the tools, structure, and support I needed to grow. One of the biggest takeaways was realizing how much I’m actually capable of when I commit to something.
 
-Building a full-stack application like Flavorly is something I never imagined I’d be able to do when I first started the bootcamp. Seeing this idea come to life through code has been incredibly rewarding, and it’s proof of how much I’ve learned. Completing the program is something I’ll always be proud of — and it's just the beginning of my journey as a developer.
+TaskZap represents that growth. This project allowed me to apply everything I’ve learned while continuing to challenge myself beyond the curriculum. From strengthening my understanding of Python and Django to refining my frontend design skills with Bootstrap and custom CSS, I intentionally used this application as a way to push my technical abilities further. More than just a task manager, TaskZap reflects my progression from curiosity-driven learner to confident full-stack developer focused on building clean, functional, and scalable applications.
+
+I’m now seeking an opportunity as a junior developer where I can contribute to a collaborative team, continue expanding my technical skill set, and bring the same level of dedication and growth mindset that fueled the creation of this project.
 
     
 ## Works Cited:
