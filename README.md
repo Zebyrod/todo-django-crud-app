@@ -51,10 +51,10 @@ The app is built using Python and the Django web framework, leveraging Django’
 ## Wireframe Link
 * https://lucid.app/lucidspark/b0aa772d-6560-4e3c-a853-599184b61813/edit?page=0_0#
 ## Trello Planning
-*https://trello.com/b/GFecE0qq/taskzap-plan-board
+* https://trello.com/b/GFecE0qq/taskzap-plan-board
 
 ## <a name="design"></a>Design
-* TaskZap was designed around a bold thunder and lightning theme to reflect energy, momentum, and productivity. I wanted the visual identity of the application to feel powerful and dynamic — aligning with the idea that completing tasks should feel impactful. Dark gradient backgrounds, high-contrast typography, and sharp accent colors were intentionally chosen to create a modern interface that feels focused while minimizing distractions. The overall aesthetic reinforces the idea of “striking down” tasks efficiently.
+TaskZap was designed around a bold thunder and lightning theme to reflect energy, momentum, and productivity. I wanted the visual identity of the application to feel powerful and dynamic — aligning with the idea that completing tasks should feel impactful. Dark gradient backgrounds, high-contrast typography, and sharp accent colors were intentionally chosen to create a modern interface that feels focused while minimizing distractions. The overall aesthetic reinforces the idea of “striking down” tasks efficiently.
 
 From a layout perspective, I implemented a card-based design using Bootstrap to clearly separate each task into its own visual container. This approach improves readability, creates strong visual hierarchy, and allows users to quickly scan their task list without feeling overwhelmed. The spacing, alignment, and consistent structure help maintain clarity while supporting responsive behavior across different screen sizes.
 
@@ -96,6 +96,7 @@ I’m now seeking an opportunity as a junior developer where I can contribute to
     
 ## Works Cited:
 * Bootstrap 
+
 Bootstrap is an open-source CSS framework used to build responsive, mobile-first websites quickly and efficiently. It provides prebuilt components like grids, buttons, navigation bars, forms, and more — helping developers save time while maintaining consistent design.
 
 I used Bootstrap to style Taskzap, including layout structure, form styling, buttons, and navigation bar
@@ -103,6 +104,7 @@ I used Bootstrap to style Taskzap, including layout structure, form styling, but
 - https://www.w3schools.com/bootstrap5/
 
 * Custom CSS Static Files
+
 Custom CSS was integrated into this project using Django's static file config to ensure proper asset loading across the production environment. By extending the Bootstrap's default classes and overriding specific styles, I was able to maintain responsiveness while achieving the theme I was aiming for. This helped to reinforce my understanding of not only how Django manages static files, but how to layer styling with a template using Bootstrap. As a developer I always felt like CSS and styling was was weakest area, and I can say I am pretty proud of some of the cool and complex styling I was able to incorporate into this project.
 
 
@@ -113,6 +115,7 @@ Custom CSS was integrated into this project using Django's static file config to
 
 
 * DateTime Fields
+
 I leveraged Django's built-in DateTimeField functionality to automatically track important metadata such as time of creation, due dates, time of completion etc. By incorporating these fields into my models, the application maintains accurate time-based records without requiring manual input from the users. This made entering the data feel great, while also allowing the opportunity for further expansion with future features like sorting or deadline based reminders.
 
 
