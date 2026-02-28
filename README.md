@@ -79,7 +79,7 @@ From a layout perspective, I implemented a card-based design using Bootstrap to 
 
 ## Live link
 * You can view the deployed site here:
-[Taskzap]()
+[Taskzap](https://taskzap-218aece0a6e2.herokuapp.com/)
 * If unable to view please go live locally through VS Code 
 
 ## <a name="Zebastian Rodriguez"></a>The Developer
