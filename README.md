@@ -98,14 +98,26 @@ I’m now seeking an opportunity as a junior developer where I can contribute to
 * Bootstrap 
 Bootstrap is an open-source CSS framework used to build responsive, mobile-first websites quickly and efficiently. It provides prebuilt components like grids, buttons, navigation bars, forms, and more — helping developers save time while maintaining consistent design.
 
-I used Bootstrap to style the Flavorly application, including layout structure, form styling, buttons, the navigation bar, and toast messages for user feedback.
+I used Bootstrap to style Taskzap, including layout structure, form styling, buttons, and navigation bar
 - https://getbootstrap.com/docs/5.3/getting-started/introduction/
 - https://www.w3schools.com/bootstrap5/
 
-* Toast Messages
-Bootstrap Toasts are lightweight notifications designed to provide feedback to users in a subtle, non-intrusive way. They appear temporarily on the screen and can be dismissed by the user.
+* Custom CSS Static Files
+Custom CSS was integrated into this project using Django's static file config to ensure proper asset loading across the production environment. By extending the Bootstrap's default classes and overriding specific styles, I was able to maintain responsiveness while achieving the theme I was aiming for. This helped to reinforce my understanding of not only how Django manages static files, but how to layer styling with a template using Bootstrap. As a developer I always felt like CSS and styling was was weakest area, and I can say I am pretty proud of some of the cool and complex styling I was able to incorporate into this project.
 
-In Flavorly, I implemented Bootstrap Toast messages to show confirmation and status updates, such as when a recipe is successfully created, updated, or deleted. This improves user experience by providing clear, immediate feedback on their actions. This was super easy as the messages was already included within my installed application so I just had to add the code to pop up the messages on successful actions. 
-- https://docs.djangoproject.com/en/5.2/ref/contrib/messages/ 
-- https://getbootstrap.com/docs/5.3/components/toasts/#overview
+
+- https://getbootstrap.com/docs/5.3/getting-started/introduction/
+- https://docs.djangoproject.com/en/6.0/howto/static-files/
+- https://www.youtube.com/watch?v=z2LQYsZhsFw
+- https://www.youtube.com/watch?v=u_GIT5MJAtc&t=257s
+
+
+* DateTime Fields
+I leveraged Django's built-in DateTimeField functionality to automatically track important metadata such as time of creation, due dates, time of completion etc. By incorporating these fields into my models, the application maintains accurate time-based records without requiring manual input from the users. This made entering the data feel great, while also allowing the opportunity for further expansion with future features like sorting or deadline based reminders.
+
+
+- https://www.geeksforgeeks.org/python/datetimefield-django-models/
+- https://docs.djangoproject.com/en/6.0/ref/models/fields/
+- https://www.youtube.com/watch?v=3Csl3PcWU8I
+- https://www.youtube.com/watch?v=y3XT3L66Z_Q
 
